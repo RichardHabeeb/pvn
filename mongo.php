@@ -1,22 +1,18 @@
 <?php
+$env = getenv("MONGOLAB_URI");
 
-$mongo_url = parse_url(getenv("MONGOLAB_URI"));
-echo getenv("MONGOLAB_URI");
-
-if (!isset($mongo_url["path"]) || trim($mongo_url["path"]) == "") {
-	$mongo_url = parse_url("mongodb://test:test@ds037698.mongolab.com:37698/heroku_app17126981");
+if (!$env) {
+	$env = "mongodb://heroku_app17126981:cd2ctno8ip80ajgm9sokrd4lfp@ds037698.mongolab.com:37698/heroku_app17126981";
 }
 
+$mongo_url = parse_url($env);
 $dbname = str_replace("/", "", $mongo_url["path"]);
 
-try {
-	$m   = new Mongo(getenv("MONGOLAB_URI"));
-	$db = $m->$dbname;
-	$col = $db->access;
-} catch(exception $e) {
-	print_r($e);
-}
+$m   = new Mongo($env);
+$db = $m->$dbname;
+$col = $db->access;
+
 	
-if($debug_logging) echo "Mongo loaded. ";
+if($debug_logging) echo "Mongo loaded.\n";
 
 /* End of mongo.php */

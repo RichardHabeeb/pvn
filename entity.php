@@ -30,16 +30,17 @@ class Entity implements iEntity {
 	private $id, $class, $name, $health, $maxhealth, $mastery, $exp, $loot, $moxie, $impetus, $guts;
 	
 	public function __construct() {
-		this::$id = 0;
-		this::$class = $classes["None"];
-		this::$health = 10;
-		this::$maxhealth = 10;
-		this::$mastery = 1;
-		this::$exp = 0;
-		this::$loot = 0;
-		this::$moxie = 1;
-		this::$impetus = 1;
-		this::$guts = 1;
+		$this->id = 0;
+		$this->class = $classes["None"];
+		$this->name = "nameless";
+		$this->health = 10;
+		$this->maxhealth = 10;
+		$this->mastery = 1;
+		$this->exp = 0;
+		$this->loot = 0;
+		$this->moxie = 1;
+		$this->impetus = 1;
+		$this->guts = 1;
 		
 	}
 	
