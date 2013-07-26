@@ -4,8 +4,9 @@
 		$mongo_url = parse_url(getenv("MONGOLAB_URI"));
 		$dbname = str_replace("/", "", $mongo_url["path"]);
 		
-		echo exec("pwd");
-		echo exec("ls -l");
+		echo $mongo_url . "<br />";
+		echo exec("pwd") . "<br />";
+		echo exec("ls -l") . "<br />";
 
 		/*
 		# connect
