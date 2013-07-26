@@ -1,11 +1,11 @@
 <?php
 	try {
 		# get the mongo db name out of the env
-		$mongo_url = parse_url(getenv("MONGOHQ_URL"));
+		$mongo_url = parse_url(getenv("MONGOLAB_URI"));
 		$dbname = str_replace("/", "", $mongo_url["path"]);
 
 		# connect
-		$m   = new Mongo(getenv("MONGOHQ_URL"));
+		$m   = new Mongo(getenv("MONGOLAB_URI"));
 		$db  = $m->$dbname;
 		$col = $db->access;
 
