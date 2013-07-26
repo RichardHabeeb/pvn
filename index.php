@@ -8,21 +8,12 @@
 		echo exec("pwd") . "<br />";
 		echo exec("ls -l") . "<br />";
 		
-		print_r( get_loaded_extensions());
-		echo "loading 1";
-		dl("ext/mongo.so");
-		echo "loading 2";
-		dl("mongo.so");
-		echo "loading 3";
-		dl("/app/www/ext/mongo.so");
-		echo "loading 4";
-		print_r( get_loaded_extensions());
 		
 		# connect
 		$m   = new Mongo(getenv("MONGOLAB_URI"));
 		$db  = $m->$dbname;
 		$col = $db->access;
-		/*
+		
 		# insert a document
 		$visit = array( "ip" => $_SERVER["HTTP_X_FORWARDED_FOR"] );
 		$col->insert($visit);
@@ -35,7 +26,7 @@
 
 		# disconnect
 		$m->close();
-		*/
+		/**/
 	} catch (Exception $e) {
 		echo "Exception: ", $e->getMessage(), "\n";
 	}
