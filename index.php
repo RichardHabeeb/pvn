@@ -2,8 +2,7 @@
 	# get the mongo db name out of the env
 	$mongo_url = parse_url(getenv("MONGOHQ_URL"));
 	$dbname = str_replace("/", "", $mongo_url["path"]);
-	echo $mongo_url. "<br>". $dbname;
-	/*
+
 	# connect
 	$m   = new Mongo(getenv("MONGOHQ_URL"));
 	$db  = $m->$dbname;
@@ -21,5 +20,4 @@
 
 	# disconnect
 	$m->close();
-	*/
 ?>
