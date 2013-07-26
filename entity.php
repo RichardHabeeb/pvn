@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Interface: iEntity 
+ * Interface: iEntity
  * 
  * @author	Richard Habeeb
  */
@@ -9,8 +9,8 @@ interface iEntity {
 	
 	
 	public function __construct();
-	public function __construct($json);
-	public function __construct($id, $class, $name, $health, $maxhealth, $mastery, $exp, $loot, $moxie, $impetus, $guts);
+	//public function __construct($json);
+	//public function __construct($id, $class, $name, $health, $maxhealth, $mastery, $exp, $loot, $moxie, $impetus, $guts);
 	
 	public function get_json_summary();
 	
@@ -43,18 +43,41 @@ class Entity implements iEntity {
 		
 	}
 	
-	public function __construct($json);
-	public function __construct($id, $class, $health, $maxhealth, $mastery, $exp, $loot, $moxie, $impetus, $guts);
+	//public function __construct($json);
+	//public function __construct($id, $class, $health, $maxhealth, $mastery, $exp, $loot, $moxie, $impetus, $guts);
 	
-	public function get_json_summary();
+	public function get_json_summary() {
+		
+		
+	}
 	
-	public function gain_health($amount);
-	public function take_damage($amount);
-	public function gain_exp($amount);
-	public function gain_loot($amount);
-	public function gain_moxie($amount);
-	public function gain_impetus($amount);
-	public function gain_guts($amount);
+	public function gain_health($amount) {
+		
+	}
+	
+	public function take_damage($amount) {
+		
+	}
+	
+	public function gain_exp($amount) {
+		
+	}
+	
+	public function gain_loot($amount) {
+		
+	}
+	
+	public function gain_moxie($amount) {
+		
+	}
+	
+	public function gain_impetus($amount) {
+		
+	}
+	
+	public function gain_guts($amount) {
+		
+	}
 }
 
 /* End of entity.php */
