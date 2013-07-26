@@ -4,7 +4,7 @@
 		$mongo_url = parse_url(getenv("MONGOLAB_URI"));
 		$dbname = str_replace("/", "", $mongo_url["path"]);
 		
-		echo $mongo_url . "<br />";
+		echo $mongo_url["path"] . "<br />";
 		echo exec("pwd") . "<br />";
 		echo exec("ls -l") . "<br />";
 
