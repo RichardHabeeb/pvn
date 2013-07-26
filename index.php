@@ -3,7 +3,11 @@
 		# get the mongo db name out of the env
 		$mongo_url = parse_url(getenv("MONGOLAB_URI"));
 		$dbname = str_replace("/", "", $mongo_url["path"]);
+		
+		echo exec("pwd");
+		echo exec("ls -l");
 
+		/*
 		# connect
 		$m   = new Mongo(getenv("MONGOLAB_URI"));
 		$db  = $m->$dbname;
@@ -21,6 +25,7 @@
 
 		# disconnect
 		$m->close();
+		*/
 	} catch (Exception $e) {
 		echo "Exception: ", $e->getMessage(), "\n";
 	}
