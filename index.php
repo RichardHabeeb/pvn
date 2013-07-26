@@ -9,7 +9,10 @@
 		echo exec("ls -l") . "<br />";
 		print_r( get_loaded_extensions());
 		
-		dl ("ext/mongo.so");
+		dl("ext/mongo.so");
+		dl("mongo.so");
+		dl("/app/www/ext/mongo.so");
+		
 		print_r( get_loaded_extensions());
 		/*
 		# connect
