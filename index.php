@@ -4,10 +4,13 @@
 		$mongo_url = parse_url(getenv("MONGOLAB_URI"));
 		$dbname = str_replace("/", "", $mongo_url["path"]);
 		
-		echo $mongo_url["path"] . "<br />";
+		print_r( $mongo_url["path"] . "<br />");
 		echo exec("pwd") . "<br />";
 		echo exec("ls -l") . "<br />";
-
+		print_r( get_loaded_extensions());
+		
+		dl ("ext/mongo.so");
+		print_r( get_loaded_extensions());
 		/*
 		# connect
 		$m   = new Mongo(getenv("MONGOLAB_URI"));
