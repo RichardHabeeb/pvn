@@ -22,7 +22,7 @@ interface iEntity {
 	public function gain_impetus($amount);
 	public function gain_guts($amount);
 
-
+}
 
 class Entity implements iEntity {
 	public static $classes = array("None" => "None" , "Pirate" => "Pirate",  "Ninja" => "Ninja");
