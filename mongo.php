@@ -10,7 +10,8 @@ $dbname = str_replace("/", "", $mongo_url["path"]);
 
 $m   = new Mongo($env);
 $db = $m->$dbname;
-$col = $db->access;
+$col_users = $db->_users;
+$col_items = $db->_items;
 
 	
 if($debug_logging) echo "Mongo loaded.\n";

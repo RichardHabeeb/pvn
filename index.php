@@ -1,14 +1,21 @@
 <?php
 
 $debug_logging = true;
-
 if($debug_logging) echo "PVN Start.\n";
 
-require_once 'mongo.php';
+require_once 'couch.php';
 require_once 'entity.php';
+require_once 'item.php';
+
+
 
 $player = new Entity();
-print_r($player);
+var_dump($player);
+
+
 
 if($debug_logging) echo "\nPVN End.";
+
+
+ 
 /* End of index.php */
