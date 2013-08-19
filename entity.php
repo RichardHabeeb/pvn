@@ -14,6 +14,7 @@ interface iEntity {
 	public function load_json_summary($json);
 	
 	public function id();
+	public function rev();
 	public function type();
 	public function name();
 	public function health();
@@ -28,6 +29,7 @@ interface iEntity {
 	public function buff_fortitude();
 	
 	public function set_id($val);
+	public function set_rev($val);
 	public function set_type($val);
 	public function set_name($val);
 	public function adjust_health($amount);
@@ -45,10 +47,11 @@ interface iEntity {
 class Entity implements iEntity {
 	public static $types = array("None" => "None" , "Pirate" => "Pirate",  "Ninja" => "Ninja", "Monster" => "Monster", "NPC" => "NPC");
 	
-	private $id, $type, $name, $health, $maxhealth, $loot, $moxie,  $pepper,  $fortitude, $buff_maxhealth, $buff_moxie, $buff_pepper, $buff_fortitude;
+	private $_id, $_rev, $type, $name, $health, $maxhealth, $loot, $moxie,  $pepper,  $fortitude, $buff_maxhealth, $buff_moxie, $buff_pepper, $buff_fortitude;
 	
 	public function __construct() {	
-		$this->id = -1;
+		$this->_id = -1;
+		$this->_rev = -1;
 		$this->type = Entity::$types["None"];
 		$this->name = "nameless";
 		$this->health = 10;
@@ -66,7 +69,8 @@ class Entity implements iEntity {
 	
 	public function load_json_summary($json) {
 		$values = json_decode($json, true);
-		$this->id 				= $values["id"];
+		$this->_id 				= $values["_id"];
+		$this->_rev				= $values["_rev"];
 		$this->type 			= $values["type"];
 		$this->name 			= $values["name"];
 		$this->health 			= $values["health"];
@@ -83,7 +87,8 @@ class Entity implements iEntity {
 	
 	public function get_json_summary() {
 		return json_encode(array(
-			"id" 				=> $this->id,
+			"_id" 				=> $this->_id,
+			"_rev"				=> $this->_rev,
 			"type" 				=> $this->type,
 			"name" 				=> $this->name,
 			"health" 			=> $this->health,
@@ -99,7 +104,8 @@ class Entity implements iEntity {
 		));
 	}
 	
-	public function id() 				{return $this->id;}
+	public function id() 				{return $this->_id;}
+	public function rev() 				{return $this->_rev;}
 	public function type() 				{return $this->type;}
 	public function name() 				{return $this->name;}
 	public function health() 			{return $this->health;}
@@ -115,7 +121,11 @@ class Entity implements iEntity {
 	
 	
 	public function set_id($val) {
-		$this->id = $val;
+		$this->_id = $val;
+	}
+	
+	public function set_rev($val) {
+		$this->_rev = $val;
 	}
 	
 	public function set_type($val) {
