@@ -29,7 +29,7 @@ class CouchDatabase {
 	}
 	
 	function pushEntity(Entity $entity) {
-		if($entity->id() == -1 || $entity->id() == null) {
+		if($entity->_id() == -1 || $entity->_id() == null) {
 			$entity->set_id($this->getNewID());
 			
 			
