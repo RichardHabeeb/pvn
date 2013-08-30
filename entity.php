@@ -82,7 +82,7 @@ class Entity implements iEntity {
 		//load items and buffs from couch
 	}
 	
-	public function get_json_summary() {
+	public function get_json_summary($get_id = true, $get_rev = true) {
 		
 		$json_buff_ids = array();
 		foreach($this->buffs as $key => $value) {
@@ -94,21 +94,35 @@ class Entity implements iEntity {
 			array_push($json_item_ids, $key);
 		}
 		
-		
-		return json_encode(array(
-			"_id" 				=> $this->_id,
-			"_rev"				=> $this->_rev,
-			"type" 				=> $this->type,
-			"name" 				=> $this->name,
-			"health" 			=> $this->health,
-			"maxhealth" 		=> $this->maxhealth,
-			"loot" 				=> $this->loot,
-			"moxie" 			=> $this->moxie,
-			"pepper" 			=> $this->pepper,
-			"fortitude" 		=> $this->fortitude,
-			"items"				=> $json_item_ids,
-			"buffs"				=> $json_buff_ids,
-		));
+		if($get_id) {
+			return json_encode(array(
+				"_id" 				=> $this->_id,
+				"_rev"				=> $this->_rev,
+				"type" 				=> $this->type,
+				"name" 				=> $this->name,
+				"health" 			=> $this->health,
+				"maxhealth" 		=> $this->maxhealth,
+				"loot" 				=> $this->loot,
+				"moxie" 			=> $this->moxie,
+				"pepper" 			=> $this->pepper,
+				"fortitude" 		=> $this->fortitude,
+				"items"				=> $json_item_ids,
+				"buffs"				=> $json_buff_ids,
+			));
+		} else {
+			return json_encode(array(
+				"type" 				=> $this->type,
+				"name" 				=> $this->name,
+				"health" 			=> $this->health,
+				"maxhealth" 		=> $this->maxhealth,
+				"loot" 				=> $this->loot,
+				"moxie" 			=> $this->moxie,
+				"pepper" 			=> $this->pepper,
+				"fortitude" 		=> $this->fortitude,
+				"items"				=> $json_item_ids,
+				"buffs"				=> $json_buff_ids,
+			));
+		}
 	}
 	
 	public function _id() 				{return $this->_id;}
@@ -177,50 +191,62 @@ class Entity implements iEntity {
 	
 	public function set_id($val) {
 		$this->_id = $val;
+		return $this;
 	}
 	
 	public function set_rev($val) {
 		$this->_rev = $val;
+		return $this;
 	}
 	
 	public function set_type($val) {
 		$this->type = $val;
+		return $this;
 	}
 	
 	public function set_name($val) {
 		$this->name = $val;
+		return $this;
 	}
 	
 	public function adjust_health($amount) {
 		$this->health = max(min($this->maxhealth(), $this->health+$amount), 0);
+		return $this;
 	}
 	
 	public function adjust_maxhealth($amount) {
 		$this->maxhealth = max($this->maxhealth+$amount, 0);
+		return $this;
 	}
 	
 	public function adjust_loot($amount) {
 		$this->loot = max($this->loot+$amount, 0);
+		return $this;
 	}
 	
 	public function adjust_moxie($amount) {
 		$this->moxie = max($this->moxie+$amount, 0);
+		return $this;
 	}
 	
 	public function adjust_pepper($amount) {
 		$this->pepper = max($this->pepper+$amount, 0);
+		return $this;
 	}
 	
 	public function adjust_fortitude($amount) {
 		$this->fortitude = max($this->fortitude+$amount, 0);
+		return $this;
 	}
 	
 	public function add_buff(Buff $buff) {
 		$this->buffs[$buff->_id()] = $buff;
+		return $this;
 	}
 	
 	public function add_item(iItem $item) {
 		$this->items[$item->_id()] = $item;
+		return $this;
 	}
 	
 	public function equip_item($item_id) {
@@ -233,6 +259,7 @@ class Entity implements iEntity {
 				$this->armor_id = $item_id;
 			}
 		}
+		return $this;
 	}
 	
 }

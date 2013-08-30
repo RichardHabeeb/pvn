@@ -1,17 +1,10 @@
 <?php
 
-$debug_logging = true;
-if($debug_logging) echo "PVN Start.\n";
+require_once 'includes.php';
+require_once 'head.php';
 
 
-require_once 'couch.php';
-require_once 'buff.php';
-require_once 'item.php';
-require_once 'entity.php';
 
-
-$c = new CouchDatabase("CLOUDANT_URL");
-$c->setDB("dev");
 
 
 $player = new Entity();
@@ -33,8 +26,6 @@ echo $player->maxhealth();
 
 
 
-if($debug_logging) echo "\nPVN End.";
 
-
- 
+require_once 'foot.php';
 /* End of index.php */

@@ -1,6 +1,7 @@
 <?php
 
-error_reporting(0);
+
+require_once('lib/CouchSessionStore.php');
 require_once('lib/Sag.php');
 
 
@@ -16,6 +17,7 @@ class CouchDatabase {
 		$path = parse_url($this->env);
 		$this->sag = new Sag($path['host'], '5984');
 		$this->sag->login($path['user'], $path['pass']);
+		$this->sag->decode(False);
 	}
 	
 	function setDB($db) {
@@ -28,21 +30,41 @@ class CouchDatabase {
 		return $this->sag->generateIDs(1)->body->uuids[0];
 	}
 	
-	function pushEntity(Entity $entity) {
+	
+	function pushEntity(Entity &$entity) {
 		if($entity->_id() == -1 || $entity->_id() == null) {
-			$entity->set_id($this->getNewID());
+			
+			$this->setDB("entity");
+			$result = $this->sag->post($entity->get_json_summary(false))->body;
+			
+			if(!$result->ok) {
+				//error handle
+			}
 			
 			
-			//var_dump($this->sag->put($entity->id(), $entity->get_json_summary()));
+			return $entity->set_id($result->id)->set_rev($result->rev);
+					
 		}
 		
 	}
 	
+	
+	function getEntity($_id) {
+		
+		try{
+			$this->setDB("entity");
+			$entity = new Entity(); 
+			$entity->load_json_summary($this->sag->get($_id)->body);
+			
+			//get items and buffs
+			
+			return $entity;
+		}
+		catch(SagCouchException $e) {
+			return $e->__toString();
+		}
+	}
+	
 }
 
-
-
-	
-if($debug_logging) echo "Couch loaded.\n";
-
-/* End of mongo.php */
+/* End of couch.php */
