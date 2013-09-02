@@ -1,0 +1,115 @@
+@import "elements.less";
+
+@font-face
+{
+    font-family: 'League Gothic';
+    src: url('../fonts/LeagueGothic-Regular.otf');
+}
+@font-face {
+  font-family: 'League Gothic';
+  font-style: italic;
+  src: url('../fonts/LeagueGothic-Italic.otf');
+}
+
+body {
+    background-color:#333;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    color: #eee;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.page_head {
+    overflow: auto;
+}
+
+.logo_container {
+    float: left;
+    margin-left: -100%;
+}
+
+.logo {
+
+    background-color: #222;
+    border: 15px solid #eee;
+    width:260px;
+    text-align:center;
+    margin: 10px;
+    .inner-shadow(0, 0, 10px, 1);;
+    
+    h1 {
+        font-family: 'League Gothic', sans-serif;
+        font-size: 100px;
+        letter-spacing: -2px;
+        line-height: 60px;
+        margin-top: 15px;
+    }
+    
+    h2 {
+        font-family: 'League Gothic', sans-serif;
+        font-size: 50px;
+        letter-spacing: 10px;
+        line-height: 50px;
+        margin-top: -5px;
+    }
+    
+}
+
+.nav_container {
+    float: left;
+    width: 100%;
+    nav {
+        margin: 10px;
+        margin-left: 280px;
+        //font-size: 24px;
+        
+        .navbar-brand {
+            font-family: 'League Gothic', sans-serif;
+            font-size: 28px;
+        }
+        
+        .dropdown-menu li {
+               //font-size: 20px;
+              // font-style: italic;
+        }
+    }
+}
+
+
+
+.content_wrapper {
+    font-family: 'Open Sans';
+    font-size: 14px;
+    margin-left: 10px;
+    overflow: auto;
+    
+    .page_content_wrapper {
+        float:left;
+        width: 100%;
+        
+        .page_content {
+            overflow:auto;
+            min-height: 500px;
+            margin-left: 260px;
+            margin-right: 10px;
+            padding: 15px;
+            background-color: #fff;
+            border-top: 15px solid #eee;
+            color: #333;
+            
+        }
+    }
+    
+    .sidebar {
+        float: left;
+        margin-left: -100%;
+        width:260px;
+        border-top: 15px solid #eee;
+        min-height: 500px;
+        background-color: #eee;
+    }
+}
+
+
+

@@ -5,15 +5,25 @@
 
 ?>
 
+			</div>
+		</div>
+		
+		<div class='sidebar'>
+			
+			
+		</div>
+	</div>
 
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/json2.min.js"></script>
     <script src="js/json_parse.min.js"></script>
+    <script src="js/jquery.hoverIntent.minified.js"></script>
+    <script src="js/jquery.color-2.1.2.min.js"></script>
+    
     <script src="js/interaction.js"></script>
+    
+    
   </body>
 </html>
 

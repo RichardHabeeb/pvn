@@ -1,6 +1,23 @@
 
 
 $(document).ready(function(){
+	
+	
+	
+	$(".logo").hoverIntent(function() {
+		$(".logo").animate({ backgroundColor: "#422" }, 500 );
+		
+	},
+	function() {
+		$(".logo").animate({ backgroundColor: "#222" }, 500 );
+		
+	});
+	
+	
+	
+	
+	
+	
 	$.ajaxSetup({
 		url: "interaction.php"
 	});
@@ -12,6 +29,8 @@ $(document).ready(function(){
 	    console.log("ping... ", data);
 	  }
 	});
+	
+	
 	
 	
 	
